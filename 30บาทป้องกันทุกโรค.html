@@ -1,0 +1,980 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>30 บาทป้องกันทุกโรค | Precision Prevention</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700;800&family=Chakra+Petch:wght@400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal: #00C9A7;
+    --teal-dark: #00957C;
+    --navy: #0B1E3D;
+    --navy-mid: #102954;
+    --cyan: #38EFEF;
+    --gold: #F5C842;
+    --coral: #FF6B6B;
+    --white: #F0F8FF;
+    --gray: #A0B4C8;
+    --glass: rgba(255,255,255,0.06);
+    --border: rgba(0,201,167,0.2);
+  }
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'Sarabun', sans-serif;
+    font-size: 17px;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* ─── NAV ─── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 18px 5%;
+    background: rgba(11,30,61,0.85);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nav-logo {
+    font-family: 'Chakra Petch', monospace;
+    font-size: 1.2rem; font-weight: 700;
+    color: var(--teal); letter-spacing: 1px;
+  }
+  .nav-logo span { color: var(--white); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--gray); text-decoration: none; font-size: 0.9rem; transition: color .2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-cta {
+    background: var(--teal); color: var(--navy);
+    border: none; padding: 10px 22px; border-radius: 50px;
+    font-family: 'Sarabun', sans-serif; font-weight: 700; font-size: 0.9rem;
+    cursor: pointer; transition: all .2s;
+  }
+  .nav-cta:hover { background: var(--cyan); transform: translateY(-1px); }
+
+  /* ─── HERO ─── */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: center;
+    padding: 120px 5% 80px;
+    position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(0,201,167,0.12) 0%, transparent 60%),
+                radial-gradient(ellipse 50% 70% at 10% 80%, rgba(56,239,239,0.07) 0%, transparent 50%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.04;
+    background-image: linear-gradient(rgba(0,201,167,1) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(0,201,167,1) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-badge {
+    display: inline-block;
+    font-family: 'Space Mono', monospace; font-size: 0.75rem;
+    color: var(--teal); border: 1px solid var(--teal);
+    padding: 6px 16px; border-radius: 50px; margin-bottom: 28px;
+    letter-spacing: 2px; text-transform: uppercase;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family: 'Chakra Petch', monospace;
+    font-size: clamp(2.2rem, 5vw, 4rem);
+    font-weight: 700; line-height: 1.15;
+    max-width: 800px;
+    animation: fadeUp 0.8s 0.15s ease both;
+  }
+  .hero h1 .accent { color: var(--teal); }
+  .hero h1 .gold { color: var(--gold); }
+  .hero-sub {
+    max-width: 620px; margin-top: 20px;
+    color: var(--gray); font-size: 1.05rem;
+    animation: fadeUp 0.8s 0.3s ease both;
+  }
+  .hero-actions {
+    display: flex; gap: 16px; flex-wrap: wrap;
+    margin-top: 36px;
+    animation: fadeUp 0.8s 0.45s ease both;
+  }
+  .btn-primary {
+    background: var(--teal); color: var(--navy);
+    padding: 14px 30px; border-radius: 50px;
+    font-weight: 700; font-size: 1rem; cursor: pointer;
+    border: none; transition: all .25s; text-decoration: none;
+    display: inline-block;
+  }
+  .btn-primary:hover { background: var(--cyan); transform: translateY(-2px); box-shadow: 0 12px 40px rgba(0,201,167,0.35); }
+  .btn-outline {
+    border: 1px solid var(--border); color: var(--white);
+    padding: 14px 30px; border-radius: 50px;
+    font-weight: 600; font-size: 1rem; cursor: pointer;
+    background: var(--glass); backdrop-filter: blur(10px);
+    transition: all .25s; text-decoration: none; display: inline-block;
+  }
+  .btn-outline:hover { border-color: var(--teal); color: var(--teal); }
+
+  .hero-stats {
+    display: flex; gap: 48px; flex-wrap: wrap;
+    margin-top: 64px;
+    animation: fadeUp 0.8s 0.6s ease both;
+  }
+  .stat { border-left: 2px solid var(--teal); padding-left: 18px; }
+  .stat-number {
+    font-family: 'Chakra Petch', monospace;
+    font-size: 2.2rem; font-weight: 700; color: var(--teal); line-height: 1;
+  }
+  .stat-label { font-size: 0.85rem; color: var(--gray); margin-top: 4px; }
+
+  /* DNA decoration */
+  .hero-visual {
+    position: absolute; right: 3%; top: 50%; transform: translateY(-50%);
+    width: 340px; opacity: 0.15;
+    animation: float 6s ease-in-out infinite;
+  }
+  @keyframes float { 0%,100%{transform:translateY(-50%) translateX(0)} 50%{transform:translateY(-52%) translateX(-8px)} }
+
+  /* ─── SECTION BASE ─── */
+  section { padding: 96px 5%; }
+  .section-tag {
+    font-family: 'Space Mono', monospace; font-size: 0.72rem;
+    color: var(--teal); letter-spacing: 3px; text-transform: uppercase;
+    margin-bottom: 12px;
+  }
+  .section-title {
+    font-family: 'Chakra Petch', monospace;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700;
+    line-height: 1.2; margin-bottom: 16px;
+  }
+  .section-sub { color: var(--gray); max-width: 560px; font-size: 1rem; }
+  .divider { width: 60px; height: 3px; background: var(--teal); margin: 20px 0; border-radius: 2px; }
+
+  /* ─── WHY ─── */
+  .why { background: var(--navy-mid); position: relative; overflow: hidden; }
+  .why::before {
+    content: '';
+    position: absolute; top: -100px; right: -100px;
+    width: 500px; height: 500px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(0,201,167,0.06) 0%, transparent 70%);
+  }
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 56px; align-items: center; }
+  .why-card {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 20px; padding: 36px;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .why-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--cyan));
+    transform: scaleX(0); transform-origin: left; transition: transform .3s;
+  }
+  .why-card:hover { border-color: var(--teal); transform: translateY(-4px); }
+  .why-card:hover::before { transform: scaleX(1); }
+  .why-icon { font-size: 2.5rem; margin-bottom: 16px; }
+  .why-card h3 { font-family: 'Chakra Petch',monospace; font-size: 1.2rem; margin-bottom: 10px; }
+  .why-card p { color: var(--gray); font-size: 0.95rem; }
+  .why-visual { display: flex; flex-direction: column; gap: 20px; }
+  .compare-row {
+    display: flex; align-items: center; gap: 16px;
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 14px; padding: 20px 24px;
+  }
+  .compare-label { font-size: 0.85rem; color: var(--gray); width: 110px; flex-shrink: 0; }
+  .compare-bar-wrap { flex: 1; background: rgba(255,255,255,0.06); border-radius: 50px; height: 10px; overflow: hidden; }
+  .compare-bar { height: 100%; border-radius: 50px; }
+  .bar-old { background: var(--coral); width: 35%; }
+  .bar-new { background: var(--teal); width: 95%; animation: barGrow 1.5s 0.5s ease both; transform-origin: left; }
+  @keyframes barGrow { from{width:0} }
+  .compare-val { font-family: 'Chakra Petch',monospace; font-weight:700; font-size:0.95rem; min-width:50px; text-align:right; }
+
+  /* ─── FEATURES ─── */
+  .features { background: var(--navy); }
+  .features-header { text-align: center; max-width: 700px; margin: 0 auto 64px; }
+  .features-header .section-sub { margin: 0 auto; }
+  .features-header .divider { margin: 20px auto; }
+  .pillar-tabs { display: flex; justify-content: center; gap: 12px; margin-bottom: 48px; flex-wrap: wrap; }
+  .pillar-tab {
+    padding: 10px 24px; border-radius: 50px;
+    border: 1px solid var(--border); background: transparent;
+    color: var(--gray); font-family: 'Sarabun',sans-serif; font-size: 0.95rem;
+    cursor: pointer; transition: all .25s;
+  }
+  .pillar-tab.active { background: var(--teal); color: var(--navy); border-color: var(--teal); font-weight: 700; }
+  .pillar-tab:hover:not(.active) { border-color: var(--teal); color: var(--teal); }
+  .pillar-content { display: none; animation: fadeIn .4s ease; }
+  .pillar-content.active { display: grid; grid-template-columns: 1fr 1.2fr; gap: 48px; align-items: center; }
+  @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+  .pillar-text h2 { font-family:'Chakra Petch',monospace; font-size:2rem; margin-bottom:16px; }
+  .pillar-text h2 .accent { color: var(--teal); }
+  .pillar-text p { color: var(--gray); margin-bottom: 24px; }
+  .feature-list { list-style: none; display: flex; flex-direction: column; gap: 14px; }
+  .feature-list li {
+    display: flex; gap: 14px; align-items: flex-start;
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 12px; padding: 16px 20px;
+    transition: border-color .2s;
+  }
+  .feature-list li:hover { border-color: var(--teal); }
+  .feat-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 2px; }
+  .feat-text strong { display: block; margin-bottom: 4px; font-size: 0.95rem; }
+  .feat-text span { color: var(--gray); font-size: 0.88rem; }
+  .pillar-card {
+    background: linear-gradient(135deg, rgba(0,201,167,0.1) 0%, rgba(56,239,239,0.05) 100%);
+    border: 1px solid var(--border); border-radius: 24px;
+    padding: 40px; position: relative; overflow: hidden;
+  }
+  .pillar-card-icon {
+    font-size: 5rem; text-align: center; margin-bottom: 24px;
+    filter: drop-shadow(0 0 30px rgba(0,201,167,0.5));
+  }
+  .pillar-card-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .mini-stat { background: var(--glass); border-radius: 12px; padding: 16px; text-align: center; }
+  .mini-stat-num { font-family:'Chakra Petch',monospace; font-size:1.6rem; font-weight:700; color:var(--teal); }
+  .mini-stat-label { font-size:0.8rem; color:var(--gray); margin-top:4px; }
+
+  /* ─── INNOVATION ─── */
+  .innovation { background: var(--navy-mid); }
+  .innovation-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 64px; align-items: center; margin-top: 56px; }
+  .ai-card {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 24px; padding: 40px; position: relative;
+  }
+  .ai-card h3 { font-family:'Chakra Petch',monospace; font-size:1.6rem; margin-bottom:8px; }
+  .ai-badge {
+    display: inline-block; background: rgba(0,201,167,0.15); color: var(--teal);
+    border: 1px solid var(--teal); border-radius: 50px;
+    font-size: 0.75rem; font-family:'Space Mono',monospace;
+    padding: 4px 14px; letter-spacing: 1px; margin-bottom: 20px;
+  }
+  .ai-metric { margin-bottom: 20px; }
+  .ai-metric-top { display: flex; justify-content: space-between; margin-bottom: 8px; }
+  .ai-metric-label { font-size: 0.9rem; color: var(--gray); }
+  .ai-metric-val { font-family:'Chakra Petch',monospace; font-weight:700; color: var(--teal); }
+  .ai-bar-wrap { background: rgba(255,255,255,0.06); border-radius: 50px; height: 8px; overflow: hidden; }
+  .ai-bar { height: 100%; border-radius: 50px; background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+  .innovation-facts { display: flex; flex-direction: column; gap: 20px; }
+  .fact-card {
+    background: var(--glass); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+    display: flex; gap: 20px; align-items: flex-start; transition: all .25s;
+  }
+  .fact-card:hover { border-color: var(--teal); transform: translateX(4px); }
+  .fact-num {
+    font-family:'Chakra Petch',monospace; font-size:2rem; font-weight:700;
+    color: var(--teal); min-width: 80px; line-height: 1;
+  }
+  .fact-card h4 { font-size: 1rem; margin-bottom: 4px; }
+  .fact-card p { font-size: 0.88rem; color: var(--gray); }
+
+  /* ─── TEAM ─── */
+  .team { background: var(--navy); }
+  .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; margin-top: 56px; }
+  .team-card {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 20px; padding: 32px; text-align: center;
+    transition: all .3s; position: relative; overflow: hidden;
+  }
+  .team-card::after {
+    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--cyan));
+    transform: scaleX(0); transition: transform .3s; transform-origin: center;
+  }
+  .team-card:hover { transform: translateY(-6px); border-color: rgba(0,201,167,0.4); }
+  .team-card:hover::after { transform: scaleX(1); }
+  .team-avatar { font-size: 3.5rem; margin-bottom: 20px; }
+  .team-role {
+    font-family:'Chakra Petch',monospace; font-size:0.75rem; color:var(--teal);
+    letter-spacing: 2px; text-transform: uppercase; margin-bottom: 10px;
+  }
+  .team-card h3 { font-size: 1.1rem; margin-bottom: 12px; }
+  .team-card p { font-size: 0.88rem; color: var(--gray); }
+  .standard-strip {
+    margin-top: 48px;
+    background: linear-gradient(135deg, rgba(0,201,167,0.1), rgba(56,239,239,0.05));
+    border: 1px solid var(--border); border-radius: 16px; padding: 28px 36px;
+    display: flex; gap: 40px; align-items: center; flex-wrap: wrap;
+  }
+  .std-badge {
+    display: flex; align-items: center; gap: 12px;
+    font-family:'Space Mono',monospace; font-size:0.85rem; color: var(--teal);
+  }
+  .std-badge span:first-child { font-size: 1.4rem; }
+
+  /* ─── ROI ─── */
+  .roi { background: var(--navy-mid); text-align: center; }
+  .roi-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 28px; margin-top: 56px; }
+  .roi-card {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 20px; padding: 40px 28px;
+    transition: all .3s;
+  }
+  .roi-card:hover { border-color: var(--teal); transform: scale(1.03); }
+  .roi-num {
+    font-family:'Chakra Petch',monospace; font-size:3rem; font-weight:700;
+    color: var(--teal); margin-bottom: 8px;
+  }
+  .roi-num sup { font-size:1.4rem; vertical-align:super; }
+  .roi-card h4 { font-size: 1rem; margin-bottom: 8px; }
+  .roi-card p { font-size: 0.88rem; color: var(--gray); }
+  .roi-cta-block { margin-top: 56px; }
+
+  /* ─── FAQ ─── */
+  .faq { background: var(--navy); }
+  .faq-grid { max-width: 800px; margin: 56px auto 0; }
+  .faq-item {
+    border: 1px solid var(--border); border-radius: 14px; margin-bottom: 14px;
+    overflow: hidden; transition: border-color .2s;
+  }
+  .faq-item.open { border-color: var(--teal); }
+  .faq-q {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 22px 28px; cursor: pointer;
+    background: var(--glass); font-weight: 600; font-size: 1rem;
+  }
+  .faq-q:hover { color: var(--teal); }
+  .faq-arrow { font-size: 1.2rem; transition: transform .3s; color: var(--teal); }
+  .faq-item.open .faq-arrow { transform: rotate(180deg); }
+  .faq-a {
+    max-height: 0; overflow: hidden; transition: max-height .4s ease, padding .3s;
+    padding: 0 28px; color: var(--gray); font-size: 0.95rem;
+  }
+  .faq-item.open .faq-a { max-height: 300px; padding: 20px 28px; }
+
+  /* ─── FOOTER ─── */
+  footer {
+    background: rgba(0,0,0,0.4); border-top: 1px solid var(--border);
+    padding: 56px 5% 36px;
+  }
+  .footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+  .footer-brand .nav-logo { font-size: 1.4rem; display: block; margin-bottom: 14px; }
+  .footer-brand p { color: var(--gray); font-size: 0.9rem; max-width: 300px; }
+  .footer-col h4 { font-family:'Chakra Petch',monospace; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase; color:var(--teal); margin-bottom:16px; }
+  .footer-col ul { list-style:none; }
+  .footer-col li { margin-bottom:10px; }
+  .footer-col a { color:var(--gray); text-decoration:none; font-size:0.9rem; transition:color .2s; }
+  .footer-col a:hover { color:var(--teal); }
+  .partners { display: flex; gap: 14px; flex-wrap: wrap; margin-top: 12px; }
+  .partner-tag {
+    background: var(--glass); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 12px; font-size: 0.78rem; color: var(--gray);
+  }
+  .footer-bottom {
+    border-top: 1px solid var(--border); padding-top: 28px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.82rem; color: var(--gray); flex-wrap: wrap; gap: 12px;
+  }
+
+  /* ─── ANIMATIONS ─── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  /* ─── PULSE CIRCLE ─── */
+  .pulse-wrap { position: relative; display: inline-block; }
+  .pulse-ring {
+    position: absolute; top: 50%; left: 50%; width: 80%; height: 80%;
+    transform: translate(-50%,-50%);
+    border: 2px solid rgba(0,201,167,0.3); border-radius: 50%;
+    animation: pulse 2.5s ease-out infinite;
+  }
+  .pulse-ring:nth-child(2) { animation-delay: 0.8s; width: 100%; height: 100%; }
+  @keyframes pulse { 0%{transform:translate(-50%,-50%) scale(0.8);opacity:1} 100%{transform:translate(-50%,-50%) scale(2);opacity:0} }
+
+  /* ─── RESPONSIVE ─── */
+  @media(max-width: 900px) {
+    .why-grid, .innovation-grid, .pillar-content.active, .footer-grid { grid-template-columns: 1fr; }
+    .team-grid { grid-template-columns: 1fr 1fr; }
+    .roi-grid { grid-template-columns: 1fr; }
+    .hero-visual { display: none; }
+    nav .nav-links { display: none; }
+  }
+  @media(max-width: 600px) {
+    .team-grid { grid-template-columns: 1fr; }
+    .hero-stats { gap: 28px; }
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--navy); }
+  ::-webkit-scrollbar-thumb { background: var(--teal-dark); border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">30<span>฿</span> PRECISION</div>
+  <ul class="nav-links">
+    <li><a href="#vision">วิสัยทัศน์</a></li>
+    <li><a href="#features">3 มิติ</a></li>
+    <li><a href="#innovation">นวัตกรรม</a></li>
+    <li><a href="#impact">ผลลัพธ์</a></li>
+    <li><a href="#faq">FAQ</a></li>
+  </ul>
+  <button class="nav-cta" onclick="document.getElementById('features').scrollIntoView({behavior:'smooth'})">ตรวจสอบสิทธิ์</button>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div style="position:relative;z-index:1">
+    <div class="hero-badge">🇹🇭 Precision Prevention Program 2025</div>
+    <h1>
+      จาก <span class="gold">"รักษาทุกโรค"</span><br>
+      สู่ <span class="accent">"ป้องกันทุกโรค"</span><br>
+      ด้วย Precision Medicine
+    </h1>
+    <p class="hero-sub">
+      พลิกโฉมระบบสาธารณสุขไทย เปลี่ยนจากการรอให้ป่วย เป็นการรู้ทันโรค
+      ด้วยเทคโนโลยีพันธุกรรม สิ่งแวดล้อม และ AI ในราคาที่ทุกคนเข้าถึงได้
+    </p>
+    <div class="hero-actions">
+      <a href="#features" class="btn-primary">🔬 ทำความรู้จัก Precision Check-up</a>
+      <a href="#vision" class="btn-outline">▶ ทำไมต้องเปลี่ยน?</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat">
+        <div class="stat-number">58x</div>
+        <div class="stat-label">Social ROI ต่อ 1 บาทที่ลงทุน</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">99.8%</div>
+        <div class="stat-label">Sensitivity AI คัดกรอง</div>
+      </div>
+      <div class="stat">
+        <div class="stat-number">3x</div>
+        <div class="stat-label">ตรวจพบความเสี่ยงมากกว่าระบบเดิม</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SVG DNA decoration -->
+  <svg class="hero-visual" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M60 20 Q140 80 60 160 Q140 240 60 320 Q140 380 60 400" stroke="#00C9A7" stroke-width="2" fill="none" opacity="0.8"/>
+    <path d="M140 20 Q60 80 140 160 Q60 240 140 320 Q60 380 140 400" stroke="#38EFEF" stroke-width="2" fill="none" opacity="0.6"/>
+    <line x1="60" y1="80" x2="140" y2="80" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="120" x2="140" y2="120" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="160" x2="140" y2="160" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="200" x2="140" y2="200" stroke="#38EFEF" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="240" x2="140" y2="240" stroke="#38EFEF" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="280" x2="140" y2="280" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+    <line x1="60" y1="320" x2="140" y2="320" stroke="#00C9A7" stroke-width="1.5" opacity="0.6"/>
+    <circle cx="60" cy="80" r="5" fill="#00C9A7"/><circle cx="140" cy="80" r="5" fill="#38EFEF"/>
+    <circle cx="60" cy="160" r="5" fill="#00C9A7"/><circle cx="140" cy="160" r="5" fill="#38EFEF"/>
+    <circle cx="60" cy="240" r="5" fill="#00C9A7"/><circle cx="140" cy="240" r="5" fill="#38EFEF"/>
+    <circle cx="60" cy="320" r="5" fill="#00C9A7"/><circle cx="140" cy="320" r="5" fill="#38EFEF"/>
+  </svg>
+</section>
+
+<!-- VISION -->
+<section class="why" id="vision">
+  <div class="section-tag">// Why Change</div>
+  <h2 class="section-title">ทำไมต้องเปลี่ยน?<br>ก่อนจะสายเกินไป</h2>
+  <div class="divider"></div>
+  <p class="section-sub">ระบบสุขภาพไทยเสียค่าใช้จ่ายมหาศาลไปกับการ "รักษา" เมื่อสายไปแล้ว ถึงเวลาเปลี่ยนมาป้องกันตั้งแต่ต้น</p>
+
+  <div class="why-grid reveal">
+    <div style="display:flex;flex-direction:column;gap:20px">
+      <div class="why-card">
+        <div class="why-icon">⚠️</div>
+        <h3>Pain Point: ระบบเดิมที่รอป่วย</h3>
+        <p>โรค NCDs อย่างเบาหวาน ความดัน มะเร็ง ป้องกันได้แต่กลับเป็นภาระหลักของระบบ เราใช้เงินรักษาโรคที่ควรป้องกันได้ตั้งแต่ต้น</p>
+      </div>
+      <div class="why-card">
+        <div class="why-icon">💡</div>
+        <h3>Solution: Active Ownership</h3>
+        <p>นำโมเดล <strong>"30 บาท"</strong> ที่คนไทยคุ้นเคย มาปัดฝุ่นใหม่ รัฐสนับสนุน High-tech Screening ประชาชนร่วมรับผิดชอบสุขภาพตัวเอง สร้างความเป็นเจ้าของสุขภาพร่วมกัน</p>
+      </div>
+    </div>
+
+    <div class="why-visual">
+      <div style="background:var(--glass);border:1px solid var(--border);border-radius:16px;padding:28px;margin-bottom:8px">
+        <div style="font-family:'Chakra Petch',monospace;font-size:0.8rem;color:var(--teal);letter-spacing:2px;margin-bottom:20px">PREVENTION vs TREATMENT</div>
+        <div class="compare-row" style="background:transparent;border:none;padding:0;margin-bottom:16px">
+          <span class="compare-label">ประสิทธิผล<br>การป้องกัน</span>
+          <div class="compare-bar-wrap"><div class="compare-bar bar-new" style="width:95%"></div></div>
+          <span class="compare-val" style="color:var(--teal)">95%</span>
+        </div>
+        <div class="compare-row" style="background:transparent;border:none;padding:0;margin-bottom:16px">
+          <span class="compare-label">ต้นทุนการรักษา</span>
+          <div class="compare-bar-wrap"><div class="compare-bar bar-old" style="width:80%"></div></div>
+          <span class="compare-val" style="color:var(--coral)">สูงมาก</span>
+        </div>
+        <div class="compare-row" style="background:transparent;border:none;padding:0;margin-bottom:16px">
+          <span class="compare-label">การป้องกัน</span>
+          <div class="compare-bar-wrap"><div class="compare-bar bar-new" style="width:20%"></div></div>
+          <span class="compare-val" style="color:var(--teal)">ต่ำกว่า</span>
+        </div>
+      </div>
+      <div style="background:linear-gradient(135deg,rgba(0,201,167,0.15),rgba(56,239,239,0.07));border:1px solid var(--teal);border-radius:16px;padding:24px;text-align:center">
+        <div style="font-family:'Chakra Petch',monospace;font-size:1.8rem;font-weight:700;color:var(--teal)">"สุขภาพดีเริ่มต้น</div>
+        <div style="font-family:'Chakra Petch',monospace;font-size:1.8rem;font-weight:700;color:var(--white)">ที่การรู้ล่วงหน้า"</div>
+        <div style="color:var(--gray);font-size:0.85rem;margin-top:8px">ไม่ใช่การรักษาเมื่อสาย</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES: 3 PILLARS -->
+<section class="features" id="features">
+  <div class="features-header">
+    <div class="section-tag">// Core Technology</div>
+    <h2 class="section-title">3 มิติแห่งการป้องกัน</h2>
+    <div class="divider"></div>
+    <p class="section-sub">Precision Check-up ที่เหนือกว่าการตรวจสุขภาพประจำปีทั่วไป ครอบคลุมทุกมิติของชีวิต</p>
+  </div>
+
+  <div class="pillar-tabs">
+    <button class="pillar-tab active" onclick="switchPillar(0)">🧬 Genetics</button>
+    <button class="pillar-tab" onclick="switchPillar(1)">🌍 Environment</button>
+    <button class="pillar-tab" onclick="switchPillar(2)">🏃 Lifestyle</button>
+  </div>
+
+  <!-- PILLAR 1: GENETICS -->
+  <div class="pillar-content active" id="pillar-0">
+    <div class="pillar-text">
+      <div class="section-tag">// มิติที่ 1</div>
+      <h2>Genetics<br><span class="accent">รู้ลึกถึงระดับ DNA</span></h2>
+      <p>ตรวจความเสี่ยงระดับพันธุกรรมเพื่อค้นหาโรคที่ซ่อนอยู่ และเลือกยาที่ใช่สำหรับคุณโดยเฉพาะ</p>
+      <ul class="feature-list">
+        <li>
+          <span class="feat-icon">🔬</span>
+          <div class="feat-text">
+            <strong>Exome Sequencing</strong>
+            <span>ตรวจความเสี่ยงระดับยีนครอบคลุม ค้นหาความเสี่ยงมะเร็ง โรคหัวใจ ก่อนอาการปรากฏ</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">💊</span>
+          <div class="feat-text">
+            <strong>Pharmacogenomics</strong>
+            <span>ตรวจยีนแพ้ยา ให้แพทย์จ่ายยาได้แม่นยำ ไม่ต้องเสี่ยงลองผิดลองถูก</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">🎯</span>
+          <div class="feat-text">
+            <strong>Personalized Prevention Plan</strong>
+            <span>วางแผนป้องกันแบบเฉพาะบุคคล ประหยัดค่ารักษาในระยะยาวได้อย่างมีนัยสำคัญ</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-card-icon">🧬</div>
+      <div class="pillar-card-stats">
+        <div class="mini-stat">
+          <div class="mini-stat-num">2-3x</div>
+          <div class="mini-stat-label">ตรวจพบความเสี่ยงมากกว่า</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">58฿</div>
+          <div class="mini-stat-label">Social ROI ต่อทุก 1 บาท</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">60%</div>
+          <div class="mini-stat-label">ปรับพฤติกรรมเมื่อรู้ผล</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">ISO</div>
+          <div class="mini-stat-label">15189 Certified</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR 2: ENVIRONMENT -->
+  <div class="pillar-content" id="pillar-1">
+    <div class="pillar-text">
+      <div class="section-tag">// มิติที่ 2</div>
+      <h2>Environment<br><span class="accent">รู้ทันภัยรอบตัว</span></h2>
+      <p>เชื่อมโยงข้อมูลที่อยู่ของคุณกับข้อมูลดาวเทียม ประเมินความเสี่ยงสะสมจากมลพิษเป็นรายบุคคล</p>
+      <ul class="feature-list">
+        <li>
+          <span class="feat-icon">🛰️</span>
+          <div class="feat-text">
+            <strong>PM 2.5 Personal Risk Tracking</strong>
+            <span>เชื่อมโยงที่อยู่กับข้อมูลดาวเทียม ประเมินความเสี่ยงสะสมมลพิษรายบุคคล</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">🗺️</span>
+          <div class="feat-text">
+            <strong>Geographic Disease Risk</strong>
+            <span>แจ้งเตือนโรคระบาดและความเสี่ยงสุขภาพตามพื้นที่ที่คุณอาศัยอยู่แบบ Real-time</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">🔔</span>
+          <div class="feat-text">
+            <strong>Early Warning System</strong>
+            <span>ระบบแจ้งเตือนล่วงหน้า เพื่อปรับพฤติกรรมก่อนที่ความเสี่ยงสะสมถึงจุดอันตราย</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-card-icon">🌍</div>
+      <div class="pillar-card-stats">
+        <div class="mini-stat">
+          <div class="mini-stat-num">24/7</div>
+          <div class="mini-stat-label">Real-time Monitoring</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">PM2.5</div>
+          <div class="mini-stat-label">Satellite Data</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">77</div>
+          <div class="mini-stat-label">จังหวัดทั่วไทย</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">AI</div>
+          <div class="mini-stat-label">Risk Prediction</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PILLAR 3: LIFESTYLE -->
+  <div class="pillar-content" id="pillar-2">
+    <div class="pillar-text">
+      <div class="section-tag">// มิติที่ 3</div>
+      <h2>Lifestyle<br><span class="accent">รู้ทันพฤติกรรม</span></h2>
+      <p>AI และ Wearables ติดตามพฤติกรรมสุขภาพแบบ Real-time พร้อมแจ้งเตือนก่อนที่จะเป็นปัญหา</p>
+      <ul class="feature-list">
+        <li>
+          <span class="feat-icon">⌚</span>
+          <div class="feat-text">
+            <strong>AI Health Monitoring</strong>
+            <span>อุปกรณ์ Wearables ติดตามการนอน การกิน และการออกกำลังกาย วิเคราะห์โดย AI</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">🤖</span>
+          <div class="feat-text">
+            <strong>Personalized Nudge System</strong>
+            <span>แจ้งเตือนอัจฉริยะเมื่อพฤติกรรมเริ่มเสี่ยง เช่น "นอนน้อยไปแล้ว 3 วัน"</span>
+          </div>
+        </li>
+        <li>
+          <span class="feat-icon">📊</span>
+          <div class="feat-text">
+            <strong>Behavioral Analytics</strong>
+            <span>วิเคราะห์แนวโน้มพฤติกรรมระยะยาว ให้คำแนะนำที่ปรับตามตัวคุณโดยเฉพาะ</span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-card-icon">🏃</div>
+      <div class="pillar-card-stats">
+        <div class="mini-stat">
+          <div class="mini-stat-num">60%</div>
+          <div class="mini-stat-label">ปรับพฤติกรรมจริง</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">5</div>
+          <div class="mini-stat-label">Health Literacy มิติ</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">AI</div>
+          <div class="mini-stat-label">Powered Insights</div>
+        </div>
+        <div class="mini-stat">
+          <div class="mini-stat-num">App</div>
+          <div class="mini-stat-label">Dashboard ส่วนตัว</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INNOVATION -->
+<section class="innovation" id="innovation">
+  <div class="section-tag">// Innovation Spotlight</div>
+  <h2 class="section-title">นวัตกรรมเพื่อคนไทย</h2>
+  <div class="divider"></div>
+
+  <div class="innovation-grid">
+    <div class="ai-card reveal">
+      <div class="ai-badge">AI BREAKTHROUGH</div>
+      <h3>AI คัดกรองธาลัสซีเมีย</h3>
+      <p style="color:var(--gray);margin-bottom:28px;font-size:0.95rem">ใช้ Machine Learning วิเคราะห์ผลเลือด CBC ธรรมดา เพิ่มความแม่นยำโดยไม่ต้องตรวจพิเศษเพิ่มเติม</p>
+
+      <div class="ai-metric">
+        <div class="ai-metric-top"><span class="ai-metric-label">Sensitivity</span><span class="ai-metric-val">99.8%</span></div>
+        <div class="ai-bar-wrap"><div class="ai-bar" style="width:99.8%"></div></div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-top"><span class="ai-metric-label">ความแม่นยำเพิ่มขึ้น</span><span class="ai-metric-val">+60%</span></div>
+        <div class="ai-bar-wrap"><div class="ai-bar" style="width:60%"></div></div>
+      </div>
+      <div class="ai-metric">
+        <div class="ai-metric-top"><span class="ai-metric-label">ลดการตรวจซ้ำซ้อน</span><span class="ai-metric-val">75%</span></div>
+        <div class="ai-bar-wrap"><div class="ai-bar" style="width:75%"></div></div>
+      </div>
+
+      <div style="margin-top:28px;padding:20px;background:rgba(0,201,167,0.1);border:1px solid var(--teal);border-radius:12px;text-align:center">
+        <div style="font-family:'Chakra Petch',monospace;font-size:2rem;font-weight:700;color:var(--gold)">ประหยัด 200M+</div>
+        <div style="color:var(--gray);font-size:0.85rem">บาท/ปี งบประมาณประเทศ</div>
+      </div>
+    </div>
+
+    <div class="innovation-facts">
+      <div class="fact-card reveal" style="transition-delay:0.1s">
+        <div class="fact-num">01</div>
+        <div>
+          <h4>Health Literacy Platform</h4>
+          <p>เปลี่ยนผลแล็บยากๆ ให้เป็นภาษาชาวบ้านที่เข้าใจง่าย เสริมสร้างความรู้สุขภาพ 5 มิติ ด้วย AI Explainer</p>
+        </div>
+      </div>
+      <div class="fact-card reveal" style="transition-delay:0.2s">
+        <div class="fact-num">02</div>
+        <div>
+          <h4>Co-report System</h4>
+          <p>ใบรายงานผลแบบบูรณาการ ระบุผู้รับผิดชอบชัดเจนทุกขั้นตอน โปร่งใส ตรวจสอบได้ ตามมาตรฐาน ISO 15189</p>
+        </div>
+      </div>
+      <div class="fact-card reveal" style="transition-delay:0.3s">
+        <div class="fact-num">03</div>
+        <div>
+          <h4>Genomic Thailand Integration</h4>
+          <p>เชื่อมต่อกับฐานข้อมูล Genomic Thailand เพื่อใช้ข้อมูลพันธุกรรมประชากรไทยในการวิเคราะห์ที่แม่นยำยิ่งขึ้น</p>
+        </div>
+      </div>
+      <div class="fact-card reveal" style="transition-delay:0.4s">
+        <div class="fact-num">04</div>
+        <div>
+          <h4>Drug-Gene Interaction Database</h4>
+          <p>ฐานข้อมูล Pharmacogenomics สำหรับคนไทย ช่วยเภสัชกรและแพทย์เลือกยาที่เหมาะกับพันธุกรรมเฉพาะบุคคล</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM / TRUST -->
+<section class="team" id="team">
+  <div style="text-align:center;margin-bottom:0">
+    <div class="section-tag" style="text-align:center">// Multidisciplinary Excellence</div>
+    <h2 class="section-title" style="text-align:center">มาตรฐานวิชาชีพ<br>การทำงานร่วมกัน</h2>
+    <div class="divider" style="margin:20px auto"></div>
+    <p class="section-sub" style="margin:0 auto;text-align:center">ทุกขั้นตอนดำเนินการโดยทีมวิชาชีพแบบ Multidisciplinary ไร้รอยต่อ</p>
+  </div>
+
+  <div class="team-grid reveal">
+    <div class="team-card">
+      <div class="team-avatar">🔬</div>
+      <div class="team-role">Medical Lab Scientist</div>
+      <h3>นักเทคนิคการแพทย์</h3>
+      <p>ตรวจวิเคราะห์แล็บ ควบคุมคุณภาพ (QC) และยืนยันผลตรวจตามมาตรฐานวิชาชีพ</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">👨‍⚕️</div>
+      <div class="team-role">Physician</div>
+      <h3>แพทย์</h3>
+      <p>วินิจฉัย แปลผลทางคลินิก และวางแผนการรักษาเฉพาะบุคคลบนพื้นฐานข้อมูลพันธุกรรม</p>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">💊</div>
+      <div class="team-role">Pharmacist</div>
+      <h3>เภสัชกร</h3>
+      <p>ให้คำปรึกษาเรื่องยา ตรวจสอบ Drug-Gene Interaction เพื่อความปลอดภัยสูงสุด</p>
+    </div>
+  </div>
+
+  <div class="standard-strip reveal">
+    <div class="std-badge"><span>✅</span> ISO 15189</div>
+    <div class="std-badge"><span>🛡️</span> Data Privacy Standard</div>
+    <div class="std-badge"><span>📋</span> Professional Law Compliance</div>
+    <div class="std-badge"><span>🔒</span> Secure Genomic Data</div>
+    <div class="std-badge"><span>📊</span> Co-report Transparency</div>
+  </div>
+</section>
+
+<!-- ROI / IMPACT -->
+<section class="roi" id="impact">
+  <div class="section-tag" style="text-align:center">// Measurable Impact</div>
+  <h2 class="section-title">ความคุ้มค่าที่จับต้องได้</h2>
+  <div class="divider" style="margin:20px auto"></div>
+  <p class="section-sub" style="margin:0 auto">ตัวเลขจริงที่พิสูจน์ว่าการลงทุนในการป้องกัน คุ้มค่ากว่าการรักษามหาศาล</p>
+
+  <div class="roi-grid reveal">
+    <div class="roi-card">
+      <div class="roi-num">58<sup>x</sup></div>
+      <h4>Social ROI</h4>
+      <p>ทุก 1 บาทที่ลงทุนในการตรวจพันธุกรรม คืนผลประโยชน์สู่สังคมถึง 58 บาท จากการลดค่ารักษาและเพิ่ม Productivity</p>
+    </div>
+    <div class="roi-card">
+      <div class="roi-num">2-3<sup>x</sup></div>
+      <h4>Detection Rate</h4>
+      <p>การตรวจแบบ Precision ตรวจพบความเสี่ยงได้มากกว่าการตรวจแบบเดิม 2-3 เท่า ช่วยป้องกันก่อนโรคปรากฏ</p>
+    </div>
+    <div class="roi-card">
+      <div class="roi-num">60<sup>%</sup></div>
+      <h4>Behavioral Change</h4>
+      <p>ผู้เข้าร่วมโครงการกว่า 60% มีการปรับเปลี่ยนพฤติกรรมจริงเมื่อทราบผลตรวจที่แม่นยำและเป็นส่วนตัว</p>
+    </div>
+  </div>
+
+  <div class="roi-cta-block reveal">
+    <div style="background:linear-gradient(135deg,rgba(0,201,167,0.15),rgba(56,239,239,0.07));border:1px solid var(--teal);border-radius:24px;padding:56px;max-width:700px;margin:0 auto;text-align:center">
+      <div class="pulse-wrap" style="display:inline-block;margin-bottom:24px">
+        <div class="pulse-ring"></div>
+        <div class="pulse-ring"></div>
+        <div style="font-size:3rem;position:relative;z-index:1">🎯</div>
+      </div>
+      <h3 style="font-family:'Chakra Petch',monospace;font-size:1.8rem;margin-bottom:12px">เริ่มต้นวันนี้<br>ด้วย Precision Check-up</h3>
+      <p style="color:var(--gray);margin-bottom:28px">ตรวจสอบสิทธิ์และเริ่มต้นเส้นทางสุขภาพเฉพาะบุคคลของคุณ</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
+        <a href="#" class="btn-primary">ตรวจสอบสิทธิ์ของฉัน</a>
+        <a href="#faq" class="btn-outline">ดูคำถามที่พบบ่อย</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div style="text-align:center">
+    <div class="section-tag" style="text-align:center">// FAQ</div>
+    <h2 class="section-title" style="text-align:center">คำถามที่พบบ่อย</h2>
+    <div class="divider" style="margin:20px auto"></div>
+  </div>
+
+  <div class="faq-grid">
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>ต้องจ่ายเงิน 30 บาททุกครั้งหรือไม่?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        แนวคิดหลักคือการสร้างการมีส่วนร่วม (Co-pay) สำหรับบริการระดับพรีเมียม (Precision Prevention) ส่วนบริการพื้นฐาน (Basic P&P) รัฐยังสนับสนุน แต่การร่วมจ่ายเพียงเล็กน้อยจะช่วยสร้าง "ความเป็นเจ้าของ" สุขภาพร่วมกัน เน้นที่โมเดลโรงพยาบาลหรือการสมัครใจ
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>ข้อมูลพันธุกรรมจะปลอดภัยหรือไม่?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        เราใช้มาตรฐานความปลอดภัยข้อมูลระดับสูงสุด มีนโยบาย Data Privacy ที่เข้มงวด และไม่เปิดเผยข้อมูลส่วนบุคคลให้กับบุคคลที่สาม ข้อมูลจะถูกเก็บในระบบที่ผ่านการรับรองความปลอดภัยและเป็นไปตามกฎหมาย PDPA
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>ใครบ้างที่ควรตรวจ Precision Check-up?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        เหมาะสำหรับทุกคน โดยเฉพาะผู้ที่มีประวัติครอบครัวเป็นโรคมะเร็ง โรคหัวใจ โรคเบาหวาน หรือผู้ที่ต้องการวางแผนสุขภาพระยะยาวอย่างแม่นยำ
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>AI คัดกรองธาลัสซีเมียแตกต่างจากการตรวจปกติอย่างไร?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        ระบบ AI วิเคราะห์ผลเลือด CBC ธรรมดาโดยใช้ Machine Learning ทำให้ตรวจพบผู้ที่มียีนธาลัสซีเมียได้แม่นยำขึ้น 60% โดยไม่ต้องเจาะเลือดเพิ่ม ลดค่าใช้จ่ายและลดการตรวจซ้ำซ้อน มี Sensitivity 99.8% ทำให้มั่นใจว่าไม่มีรายใดหลุดรอด
+      </div>
+    </div>
+    <div class="faq-item" onclick="toggleFaq(this)">
+      <div class="faq-q">
+        <span>โครงการนี้แตกต่างจาก 30 บาทรักษาทุกโรคอย่างไร?</span>
+        <span class="faq-arrow">▼</span>
+      </div>
+      <div class="faq-a">
+        "30 บาทรักษาทุกโรค" เป็นระบบที่ดีแต่เน้นการรักษาหลังจากป่วยแล้ว โครงการ "30 บาทป้องกันทุกโรค" นี้ก้าวไปอีกขั้น โดยใช้เทคโนโลยี Precision Medicine เพื่อ Active Prevention ป้องกันก่อนที่จะป่วย สร้าง Active Ownership ให้ประชาชนดูแลสุขภาพตัวเองด้วยข้อมูลที่แม่นยำ
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <span class="nav-logo">30<span>฿</span> PRECISION</span>
+      <p>พลิกโฉมระบบสาธารณสุขไทย ด้วยการป้องกันที่แม่นยำและเข้าถึงได้สำหรับทุกคน</p>
+      <div class="partners" style="margin-top:20px">
+        <span class="partner-tag">สปสช.</span>
+        <span class="partner-tag">Genomic Thailand</span>
+        <span class="partner-tag">สภาเทคนิคการแพทย์</span>
+        <span class="partner-tag">สมาคมเวชศาสตร์จีโนม</span>
+      </div>
+    </div>
+    <div class="footer-col">
+      <h4>เมนู</h4>
+      <ul>
+        <li><a href="#vision">วิสัยทัศน์</a></li>
+        <li><a href="#features">3 มิติการป้องกัน</a></li>
+        <li><a href="#innovation">นวัตกรรม</a></li>
+        <li><a href="#impact">ผลลัพธ์ ROI</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>ติดต่อ</h4>
+      <ul>
+        <li><a href="#">📞 สายด่วนสุขภาพ 1330</a></li>
+        <li><a href="#">💬 Line Official</a></li>
+        <li><a href="#">📧 info@precision30.go.th</a></li>
+        <li><a href="#">🤖 AI Health Assistant</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 30 บาทป้องกันทุกโรค | Precision Prevention Program Thailand</span>
+    <span>มาตรฐาน ISO 15189 | PDPA Compliant | กฎหมายวิชาชีพ</span>
+  </div>
+</footer>
+
+<script>
+// Pillar switching
+function switchPillar(idx) {
+  document.querySelectorAll('.pillar-content').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+  document.querySelectorAll('.pillar-tab').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+}
+
+// FAQ toggle
+function toggleFaq(el) {
+  const isOpen = el.classList.contains('open');
+  document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+  if (!isOpen) el.classList.add('open');
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('visible');
+    }
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+// Nav background
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  nav.style.background = window.scrollY > 50
+    ? 'rgba(11,30,61,0.98)'
+    : 'rgba(11,30,61,0.85)';
+});
+</script>
+</body>
+</html>
